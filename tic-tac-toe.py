@@ -69,7 +69,7 @@ def check_win_condition(player_pos, player):
     Check for win conditions.
     """
     #Possible win combinations
-    combinations = [[1,2,3], [4,5,6], [7,8,9,], [1,4,7], [2,5,8], [3,6,9]]
+    combinations = [[1,2,3], [4,5,6], [7,8,9,], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 
     for x in combinations:
         if all(y in player_pos[player] for y in x):
