@@ -1,5 +1,5 @@
 """
-Tic-Tac-Toe
+Tic-Tac-Toe: A simple game to overthink
 Author: Dean Redito
 """
 
@@ -11,7 +11,7 @@ def main():
     while True:
         print_board(values)
 
-        #Try Exception Block for wrong input on move variable
+        #Try Exception Block for wrong input on move variable.
         try:
             print(f"Player {player}'s turn. Choose a spot: ")
             move = int(input())
@@ -19,12 +19,12 @@ def main():
             print("No such moves. Please Try Again.")
             continue
 
-        #Input range check
+        #Input range check.
         if move <1 or move >9:
             print("Values not on Board. Please Try Again.")
             continue
 
-        #Check spot if not occupied by another player
+        #Check spot if not occupied by another player.
         if values[move - 1] != " ":
             print()
             print("SPOT TAKEN! Please Try Again")
@@ -35,11 +35,18 @@ def main():
 
         player_pos[player].append(move)
 
+        #Check for game ending conditions. Win condition, draw condition.
         if check_win_condition(player_pos, player):
             print_board(values)
             print(f"Player '{player}' wins.")
             return player
-        
+
+        if check_draw_condition(player_pos):
+            print_board(values)
+            print("Game tied. No more moves available. Good Game.")
+            return
+
+        #Player switch
         player = switch_player(player)
 
 
@@ -70,7 +77,18 @@ def check_win_condition(player_pos, player):
 
     return False
 
+def check_draw_condition(player_pos):
+    """
+    Check Draw Condition. If total moves of 'x' and 'o' reached 9, return True.
+    """
+    if len(player_pos['x']) + len(player_pos['o']) == 9:
+        return True
+    return False
+
 def switch_player(current_player):
+    """
+    Switch player.
+    """
     if current_player == 'o':
         return 'x'
     elif current_player == 'x':
