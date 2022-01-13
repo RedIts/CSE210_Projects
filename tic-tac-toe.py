@@ -1,5 +1,5 @@
 """
-Tic-Tac-Toe
+Tic-Tac-Toe: A simple game to overthink
 Author: Dean Redito
 """
 
